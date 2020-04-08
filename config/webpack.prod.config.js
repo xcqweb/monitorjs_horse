@@ -16,9 +16,9 @@ module.exports = {
     
     output: {
         publicPath:"",
-        path: path.resolve(__dirname, '../dist'), //打包后的文件存放的地方
-        filename: '[name].min.js', //打包后输出文件的文件名
-        chunkFilename: "[name].min.js",
+        path: path.resolve(__dirname, '../../getech-monitor/monitor'), //打包后的文件存放的地方
+        filename: '[name].js', //打包后输出文件的文件名
+        chunkFilename: "[name].js",
         library:"monitorjs",  //类库名称
         libraryTarget:"umd",  //指定输出格式
         umdNamedDefine:true //会对UMD的构建过程中的AMD模块进行命名，否则就使用匿名的define
@@ -60,7 +60,7 @@ module.exports = {
             compress: {
                 warnings: false,
                 drop_debugger: true,
-                drop_console: false
+                drop_console: true
             },
             output: {
                 comments: false

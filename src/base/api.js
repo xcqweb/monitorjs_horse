@@ -5,24 +5,24 @@ class API {
 
     constructor(url){
         this.url = url;
+        this.query = query;
     }
     
     /**
      * 上报信息 （默认方式）
      */
-    report(data){
-        if(!this.checkUrl(this.url)){
-            console.log("上报信息url地址格式不正确,url=",this.url);
-            return;
-        }
-        console.log("上报地址："+this.url);
-        this.sendInfo(data);
+    report(data, query){
+        // if(!this.checkUrl(this.url)){
+        //     console.log("上报信息url地址格式不正确,url=",this.url);
+        //     return;
+        // }
+        this.sendInfo(data, query);
     }
 
     /**
      * 发送消息
      */
-    sendInfo(data){
+    reportByImg(data){
         try {
             var xhr = new XMLHttpRequest();
             xhr.open("POST",this.url,true);
@@ -36,14 +36,19 @@ class API {
     /**
      * 通过img方式上报信息
      */
-    reportByImg(data){
-        if(!this.checkUrl(this.url)){
-            console.log("上报信息url地址格式不正确,url=",this.url);
-            return;
+    // reportByImg(data){
+        sendInfo(data){
+        // if(!this.checkUrl(this.url)){
+        //     console.log("上报信息url地址格式不正确,url=",this.url);
+        //     return;
+        // }
+        let params = data;
+        if (window.query) {
+            params = {...data, ...window.query};
         }
         try {
             var img = new Image();
-            img.src = this.url+'?v='+new Date().getTime()+'&' + this.formatParams(data);
+            img.src = this.url+'?v='+new Date().getTime()+'&' + this.formatParams(params);
         } catch (error) {
             console.log(error);
         }

@@ -25,6 +25,9 @@ var TaskQueue = {
         }
         let item = this.queues[0];
         item.reportUrl && new API(item.reportUrl).report(item.data);
+        if (item && item.data && item.data.LogType === "Error") {
+           window.__ml && window.__ml.error && window.__ml.error(item.data); 
+        }
         this.queues.splice(0,1);
         this.fire(); //递归
     }

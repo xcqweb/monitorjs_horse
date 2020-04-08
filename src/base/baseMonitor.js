@@ -82,14 +82,15 @@ class BaseMonitor {
                 txt += "OtherError: " + JSON.stringify(this.errorObj) + "\n";
                 break;
         }
-        let deviceInfo = this.getDeviceInfo();
-        txt += "DeviceInfo: " + deviceInfo; //设备信息
+        // let deviceInfo = this.getDeviceInfo();
+        // txt += "DeviceInfo: " + deviceInfo; //设备信息
         let extendsInfo = this.getExtendsInfo();
         let recordInfo = extendsInfo;
         recordInfo.SubCategory = this.category; //错误分类
         recordInfo.LogType = this.level;  //错误级别
         recordInfo.LogInfo = txt;  //错误信息
-        recordInfo.DeviceInfo = deviceInfo; //设备信息
+        recordInfo.url = window.location.href;  //url
+        // recordInfo.DeviceInfo = deviceInfo; //设备信息
         return recordInfo;
     }
 

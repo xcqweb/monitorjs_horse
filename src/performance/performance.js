@@ -45,7 +45,7 @@ const pagePerformance = {
             //【原因】这几乎代表了用户等待页面可用的时间
             times.loadPage = t.loadEventEnd - t.navigationStart;
             
-            return times;
+            return JSON.stringify(times);
             
         } catch(e) {
             console.log(e)
@@ -83,7 +83,7 @@ const pagePerformance = {
                 entryTimesList.push(templeObj);
             }
         });
-        return entryTimesList;
+        return JSON.stringify(entryTimesList);
     },
 
 };

@@ -2,7 +2,7 @@ import { AjaxError,ConsoleError,JsError,PromiseError,ResourceError,VueError } fr
 import { AjaxLibEnum } from "./base/baseConfig.js";
 import API from "./base/api.js";
 import MonitorPerformance from './performance';
-import DeviceInfo from "./device";
+// import DeviceInfo from "./device";
 
 class MonitorJS {
 
@@ -28,6 +28,8 @@ class MonitorJS {
         this.consoleError = options.consoleError || this.consoleError;
         this.vueError = options.vueError || this.vueError;
         let reportUrl = options.url;//上报错误地址
+        let query = options.query || {};//上报错误地址
+        window.query = query;
         let extendsInfo = options.extendsInfo || {};  //扩展信息（一般用于系统个性化分析）
         let param = { reportUrl, extendsInfo };
         if(this.jsError){

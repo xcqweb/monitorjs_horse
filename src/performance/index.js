@@ -9,7 +9,7 @@ class MonitorPerformance {
 
     constructor(){
         this.isPage = true; //是否上报页面性能数据
-        this.isResource = true; //是否上报页面资源数据
+        this.isResource = false; //是否上报页面资源数据
         this.outTime = 50;
         this.config = {
             resourceList:[], //资源列表
